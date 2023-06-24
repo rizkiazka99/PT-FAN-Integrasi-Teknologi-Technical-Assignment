@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "709688648039",
+    "project_id": "fanintegrasiteknoassignment",
+    "storage_bucket": "fanintegrasiteknoassignment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709688648039:android:9f4a8d94857fa127aacfc2",
+        "android_client_info": {
+          "package_name": "com.example.pt_fan_integrasi_teknologi_assignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709688648039-0lclp5oivc9gf7mh7nqn0dkq0n7ekfeb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRCBd4AifJdVMa2pCJAIjxJgPx0NNh0cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709688648039-0lclp5oivc9gf7mh7nqn0dkq0n7ekfeb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
