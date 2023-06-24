@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingTop="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    tools:context=".TermsAndConditionsActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/terms_and_conditions_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="150dp"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="12dp"
+        android:backgroundTint="@color/blue">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TERMS AND CONDITIONS"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintLeft_toLeftOf="@id/constraint1"
+                    app:layout_constraintRight_toRightOf="@id/constraint1"
+                    app:layout_constraintTop_toTopOf="@id/constraint1"
+                    android:textAlignment="center"
+                />
+                <TextView
+                    android:id="@+id/body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+
+You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms and Conditions. If you do not agree with all of these Terms and Conditions, then you are expressly prohibited from using the Site and you must discontinue use immediately.
+
+Supplemental terms and conditions or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms and Conditions at any time and for any reason.
+
+We will alert you about any changes by updating the “Last updated” date of these Terms and Conditions, and you waive any right to receive specific notice of each such change.
+
+
+
+
+It is your responsibility to periodically review these Terms and Conditions to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms and Conditions by your continued use of the Site after the date such revised Terms and Conditions are posted.
+
+The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.
+
+Accordingly, those persons who choose to access the Site from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable.
+"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    app:layout_constraintLeft_toLeftOf="@id/constraint1"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.cardview.widget.CardView>
+    <CheckBox
+        android:id="@+id/agree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="I have read and accept the terms and conditions"
+        app:layout_constraintTop_toBottomOf="@+id/terms_and_conditions_card"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/blue"
+        android:textSize="16dp"
+    />
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintTop_toBottomOf="@+id/agree"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+    />
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintTop_toBottomOf="@+id/agree"
+        app:layout_constraintEnd_toStartOf="@id/btn_continue"
+        android:layout_marginEnd="10dp"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
