@@ -23,20 +23,26 @@ class EmailVerificationController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isEmailVerified = firebaseAuth.currentUser!.emailVerified;
-    if (!isEmailVerified) {
-      sendVerificationEmail();
+    if (firebaseAuth.currentUser != null) {
+      isEmailVerified = firebaseAuth.currentUser!.emailVerified;
+      if (!isEmailVerified) {
+        sendVerificationEmail();
 
-      timer = Timer.periodic(
-        const Duration(seconds: 3), 
-        (timer) => checkEmailVerified()
-      );
+        timer = Timer.periodic(
+          const Duration(seconds: 3), 
+          (timer) => checkEmailVerified()
+        );
+      }
     }
   }
 
   @override
   void dispose() {
-    timer!.cancel();
+    if (timer != null) {
+      timer!.cancel();
+    } else {
+      timer = null;
+    }
     super.dispose();
   }
 

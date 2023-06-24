@@ -31,6 +31,11 @@ class LoginScreenController extends GetxController {
       this._isNotVisible.value = isNotVisible;
 
   @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
