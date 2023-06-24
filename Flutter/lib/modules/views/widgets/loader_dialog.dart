@@ -19,7 +19,7 @@ loaderDialog(Widget loaderIcon, String message) {
           Expanded(
             child: Text(
               message,
-              style: h5(),
+              style: h5(fontWeight: FontWeight.normal),
               overflow: TextOverflow.fade,
               maxLines: 3,
             ),

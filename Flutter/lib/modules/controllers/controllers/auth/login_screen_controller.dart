@@ -38,6 +38,16 @@ class LoginScreenController extends GetxController {
     super.dispose();
   }
 
+  double formLayoutHeight(BuildContext context) {
+    if (autoValidateEmail == AutovalidateMode.disabled && autoValidatePassword == AutovalidateMode.disabled) {
+      return MediaQuery.of(context).size.height / 1.9;
+    } else if (autoValidateEmail == AutovalidateMode.always || autoValidatePassword == AutovalidateMode.always) {
+      return MediaQuery.of(context).size.height / 1.7;
+    } else {
+      return MediaQuery.of(context).size.height / 1.5;
+    }
+  }
+
   void showAndHidePassword() {
     isNotVisible = !isNotVisible;
   }

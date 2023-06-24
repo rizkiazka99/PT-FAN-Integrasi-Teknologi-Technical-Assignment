@@ -56,9 +56,9 @@ class _AuthenticationFormState extends State<AuthenticationForm> {
           counterText: '',
           prefixIcon: widget.prefixIcon,
           suffixIcon: widget.suffixIcon,
-          prefixIconColor: primaryColor,
-          suffixIconColor: primaryColor,
-          errorMaxLines: 2,
+          prefixIconColor: Colors.black,
+          suffixIconColor: Colors.black,
+          errorMaxLines: 3,
           labelStyle: h5(
             color: primaryColor,
             fontWeight: FontWeight.normal

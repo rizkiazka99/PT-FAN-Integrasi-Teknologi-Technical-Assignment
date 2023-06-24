@@ -1,8 +1,8 @@
-class User {
+class UserResponse {
   final String name;
   final String email;
 
-  User({
+  UserResponse({
     required this.name, 
     required this.email,
   });
@@ -12,7 +12,7 @@ class User {
     'email': email
   };
 
-  static User fromJson(Map<String, dynamic> json) => User(
+  static UserResponse fromJson(Map<String, dynamic> json) => UserResponse(
     name: json['name'],
     email: json['email']
   );

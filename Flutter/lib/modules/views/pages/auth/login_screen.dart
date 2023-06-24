@@ -115,37 +115,37 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Stack(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      color: Colors.white,
+          child: Stack(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.white,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 2,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30)
+                      )
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 2,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: const BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)
-                        )
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Image.asset(
+                        'assets/img/logo.jpg'
                       ),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Image.asset(
-                          'assets/img/logo.jpg'
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
+                    ),
+                  )
+                ],
+              ),
+              SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: Center(
                     child: Container(
@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               'SIGN IN',
-                              style: h3(color: primaryColor),
+                              style: h3(),
                             ),
                             const SizedBox(height: 20),
                             AuthenticationForm(
@@ -262,9 +262,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                )
-              ],
-            )
+                ),
+              )
+            ],
           ),
         ),
       ),

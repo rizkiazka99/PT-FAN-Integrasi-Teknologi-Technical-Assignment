@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pt_fan_integrasi_teknologi_assignment/core/helpers/regex.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/core/values/colors.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/controllers/controllers/auth/register_screen_controller.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/widgets/authentication_form.dart';
@@ -46,43 +47,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Stack(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                        color: Colors.white,
+            child: Stack(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.white,
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height / 2,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)
+                        )
                       ),
-                      Container(
-                        height: MediaQuery.of(context).size.height / 2,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: const BoxDecoration(
-                          color: primaryColor,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)
-                          )
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Image.asset(
+                          'assets/img/logo.jpg'
                         ),
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: Image.asset(
-                            'assets/img/logo.jpg'
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
+                      ),
+                    )
+                  ],
+                ),
+                SingleChildScrollView(
+                  child: SizedBox(
                     height: MediaQuery.of(context).size.height,
                     child: Center(
                       child: Container(
-                        height: MediaQuery.of(context).size.height / 1.9,
+                        height: MediaQuery.of(context).size.height / 1.55,
                         width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(left: 24, right: 24),
+                        margin: const EdgeInsets.only(top: 90, left: 24, right: 24),
                         padding: const EdgeInsets.fromLTRB(12, 16, 12, 16),
                         decoration: const BoxDecoration(
                           color: Colors.white,
@@ -106,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             children: [
                               Text(
                                 'SIGN UP',
-                                style: h3(color: primaryColor),
+                                style: h3(),
                               ),
                               const SizedBox(height: 20),
                               AuthenticationForm(
@@ -131,8 +131,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   if (value!.isEmpty) {
                                     return 'Name field cannot be left empty';
                                   } else {
-                                    if (value.length != 3) {
+                                    if (value.length < 3) {
                                       return 'Name has to be at least 3 characters long';
+                                    } else if (value.length > 50) {
+                                      return 'Name cannot be more than 50 characters long';
                                     }
                                   }
                                 },
@@ -180,8 +182,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       : Icons.visibility_off),
                                 ),
                                 validator: (value) {
-                                  if (value!.isEmpty) {
+                                  bool validate = CustomRegEx.validatePassword(value!);
+
+                                  if (value.isEmpty) {
                                     return 'Password field cannot be left empty';
+                                  } else {
+                                    if (!validate) {
+                                      return 'Password needs to consist of at least 8 characters and contain at least 1 numeric character and 1 uppercase character';
+                                    }
+                                  }
+                                }
+                              )),
+                              const SizedBox(height: 15),
+                              Obx(() => AuthenticationForm(
+                                formKey: controller.confirmPasswordFormKey, 
+                                autovalidateMode: controller.autoValidateConfirmPassword, 
+                                controller: controller.confirmPasswordController, 
+                                label: 'Confirm Password',
+                                obscureText: controller.isConfirmPasswordNotVisible,
+                                prefixIcon: const Icon(
+                                  Icons.lock
+                                ),
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    controller.showAndHideConfirmPassword();
+                                  },
+                                  icon: Icon(controller.isConfirmPasswordNotVisible == true
+                                      ? Icons.visibility
+                                      : Icons.visibility_off),
+                                ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Confirm Password field cannot be left empty';
+                                  } else {
+                                    if (value != controller.passwordController.text) {
+                                      return 'Password wasn\'t confirmed';
+                                    }
                                   }
                                 }
                               )),
@@ -217,9 +253,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
-                  )
-                ],
-              )
+                  ),
+                )
+              ],
             ),
           ),
         ),
