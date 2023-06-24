@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: [
                               const Padding(
-                                padding: EdgeInsets.only(bottom: 8.0),
+                                padding: EdgeInsets.only(bottom: 8, left: 16),
                                 child: Icon(
                                   Icons.logout_outlined,
                                   color: contextRed,
@@ -63,9 +63,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           'SIGN OUT',
                                           style: h4(),
                                         ),
-                                        const Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          size: 25,
+                                        const Padding(
+                                          padding: EdgeInsets.only(right: 8),
+                                          child: Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            size: 25,
+                                          ),
                                         ),
                                       ],
                                     ),

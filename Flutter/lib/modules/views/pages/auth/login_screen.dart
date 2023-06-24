@@ -26,14 +26,26 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       margin: const EdgeInsets.all(10),
       child: Dialog(
+        backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         insetPadding: const EdgeInsets.all(10),
         child: Container(
           height: MediaQuery.of(context).size.height / 1.6,
           padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30)
+            ),
             color: Colors.white,
-            borderRadius: BorderRadius.circular(15)
+            boxShadow: [
+              BoxShadow(
+                color: shadowColor,
+                spreadRadius: 2,
+                blurRadius: 7,
+                offset: Offset(0, 3)
+              )
+            ]
           ),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -149,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: MediaQuery.of(context).size.height,
                   child: Center(
                     child: Container(
-                      height: MediaQuery.of(context).size.height / 1.9,
+                      //height: MediaQuery.of(context).size.height / 1.9,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(left: 24, right: 24),
                       padding: const EdgeInsets.fromLTRB(12, 16, 12, 16),

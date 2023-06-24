@@ -66,7 +66,7 @@ class LoginScreenController extends GetxController {
         await firebaseAuth.signInWithEmailAndPassword(
           email: emailController.text, 
           password: passwordController.text
-        ).then((value) => Get.offAllNamed(homeScreenRoute));
+        ).then((value) => Get.offAllNamed(mainScreenRoute));
       } else if (!isEmailValid) {
         autoValidateEmail = AutovalidateMode.always;
       } else if (!isPasswordValid) {

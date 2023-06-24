@@ -80,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: MediaQuery.of(context).size.height,
                     child: Center(
                       child: Container(
-                        height: MediaQuery.of(context).size.height / 1.55,
+                        //height: MediaQuery.of(context).size.height / 1.55,
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.only(top: 90, left: 24, right: 24),
                         padding: const EdgeInsets.fromLTRB(12, 16, 12, 16),

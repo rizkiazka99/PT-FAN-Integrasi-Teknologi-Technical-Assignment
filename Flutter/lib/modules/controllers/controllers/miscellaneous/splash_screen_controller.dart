@@ -20,7 +20,7 @@ class SplashScreenController extends GetxController {
 
   firstPage() {
     if (firebaseAuth.currentUser != null) {
-      Get.offAllNamed(homeScreenRoute);
+      Get.offAllNamed(mainScreenRoute);
     } else {
       Get.offAllNamed(loginScreenRoute);
     }

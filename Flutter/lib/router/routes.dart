@@ -4,12 +4,14 @@ import 'package:pt_fan_integrasi_teknologi_assignment/modules/controllers/bindin
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/controllers/bindings/auth/register_screen_binding.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/controllers/bindings/contents/home_screen_binding.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/controllers/bindings/miscellaneous/splash_screen_binding.dart';
-import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/auth/email_verification_screen.dart';
+import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/contents/email_verification_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/auth/login_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/auth/register_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/contents/home_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/miscellaneous/splash_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/router/route_names.dart';
+
+import '../modules/views/pages/contents/main_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -31,12 +33,24 @@ class AppPages {
     GetPage(
       name: emailVerificationScreenRoute,
       page: () => const EmailVerificationScreen(),
-      binding: EmailVerificationBinding()
+      bindings: [
+        EmailVerificationBinding(),
+        HomeScreenBinding()
+      ]
     ),
     GetPage(
       name: homeScreenRoute,
       page: () => const HomeScreen(),
       binding: HomeScreenBinding()
     ),
+    GetPage(
+      name: mainScreenRoute,
+      page: () => const MainScreen(),
+      bindings: [
+        EmailVerificationBinding(),
+        HomeScreenBinding(),
+        RegisterScreenBinding()
+      ]
+    )
   ];
 }

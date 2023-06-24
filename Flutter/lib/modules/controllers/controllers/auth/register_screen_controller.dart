@@ -95,7 +95,7 @@ class RegisterScreenController extends GetxController {
           User? updateUser = firebaseAuth.currentUser;
           updateUser!.updateDisplayName(nameController.text);
           userSetup(nameController.text, emailController.text);
-          Get.offAllNamed(loginScreenRoute);
+          Get.offAllNamed(mainScreenRoute);
           customSnackbar('Yay!', 'Account created successfully, welcome!');
         });
       } else if (!isNameValid) {
