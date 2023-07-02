@@ -21,8 +21,8 @@ class HomeScreenController extends GetxController {
   }
 
   @override
-  void dispose() {
-    super.dispose();
+  void onClose() {
+    super.onClose();
   }
 
   Stream<UserResponse> getUserData() => firestore.collection('users')

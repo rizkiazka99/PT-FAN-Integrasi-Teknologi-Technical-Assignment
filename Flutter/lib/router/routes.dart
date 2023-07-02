@@ -11,8 +11,6 @@ import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/conten
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/miscellaneous/splash_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/router/route_names.dart';
 
-import '../modules/views/pages/contents/main_screen.dart';
-
 class AppPages {
   static final pages = [
     GetPage(
@@ -42,15 +40,6 @@ class AppPages {
       name: homeScreenRoute,
       page: () => const HomeScreen(),
       binding: HomeScreenBinding()
-    ),
-    GetPage(
-      name: mainScreenRoute,
-      page: () => const MainScreen(),
-      bindings: [
-        EmailVerificationBinding(),
-        HomeScreenBinding(),
-        RegisterScreenBinding()
-      ]
     )
   ];
 }

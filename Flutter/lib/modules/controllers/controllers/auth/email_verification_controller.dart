@@ -37,13 +37,13 @@ class EmailVerificationController extends GetxController {
   }
 
   @override
-  void dispose() {
+  void onClose() {
     if (timer != null) {
       timer!.cancel();
     } else {
       timer = null;
     }
-    super.dispose();
+    super.onClose();
   }
 
   Future sendVerificationEmail() async {

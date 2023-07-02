@@ -11,14 +11,14 @@ import 'package:pt_fan_integrasi_teknologi_assignment/router/route_names.dart';
 class RegisterScreenController extends GetxController {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  late TextEditingController emailController;
+  late TextEditingController nameController;
+  late TextEditingController passwordController;
+  late TextEditingController confirmPasswordController;
 
-  final emailFormKey = GlobalKey<FormState>();
+  final registerEmailFormKey = GlobalKey<FormState>();
   final nameFormKey = GlobalKey<FormState>();
-  final passwordFormKey = GlobalKey<FormState>();
+  final registerPasswordFormKey = GlobalKey<FormState>();
   final confirmPasswordFormKey = GlobalKey<FormState>();
   
   var autoValidateEmail = AutovalidateMode.disabled;
@@ -45,16 +45,21 @@ class RegisterScreenController extends GetxController {
 
   @override
   void onInit() {
+    emailController = TextEditingController();
+    nameController  = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
     super.onInit();
   }
 
   @override
-  void dispose() {
+  void onClose() {
     emailController.dispose();
     nameController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
-    super.dispose();
+    super.onClose();
+    print('registerScreenController disposed');
   }
 
   void showAndHidePassword() {
@@ -78,8 +83,8 @@ class RegisterScreenController extends GetxController {
   signup() async {
     try {
       final isNameValid = nameFormKey.currentState!.validate();
-      final isEmailValid = emailFormKey.currentState!.validate();
-      final isPasswordValid = passwordFormKey.currentState!.validate();
+      final isEmailValid = registerEmailFormKey.currentState!.validate();
+      final isPasswordValid = registerPasswordFormKey.currentState!.validate();
       final isConfirmedPasswordValid = confirmPasswordFormKey.currentState!.validate();
 
       if (isNameValid && isEmailValid && isPasswordValid && isConfirmedPasswordValid) {
@@ -95,7 +100,7 @@ class RegisterScreenController extends GetxController {
           User? updateUser = firebaseAuth.currentUser;
           updateUser!.updateDisplayName(nameController.text);
           userSetup(nameController.text, emailController.text);
-          Get.offAllNamed(mainScreenRoute);
+          Get.offAllNamed(emailVerificationScreenRoute);
           customSnackbar('Yay!', 'Account created successfully, welcome!');
         });
       } else if (!isNameValid) {

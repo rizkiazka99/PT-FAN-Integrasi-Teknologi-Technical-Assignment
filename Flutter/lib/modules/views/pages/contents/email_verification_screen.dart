@@ -5,7 +5,6 @@ import 'package:pt_fan_integrasi_teknologi_assignment/core/values/font_sizes.dar
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/controllers/controllers/auth/email_verification_controller.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/pages/contents/home_screen.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/widgets/default_button.dart';
-
 import '../../widgets/custom_snackbar.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
@@ -16,10 +15,10 @@ class EmailVerificationScreen extends StatefulWidget {
 }
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
-  EmailVerificationController controller = Get.find<EmailVerificationController>();
-
   @override
   Widget build(BuildContext context) {
+    EmailVerificationController controller = Get.find<EmailVerificationController>();
+
     return Obx(() => !controller.isEmailVerified ? WillPopScope(
       onWillPop: () {
         controller.signOut();

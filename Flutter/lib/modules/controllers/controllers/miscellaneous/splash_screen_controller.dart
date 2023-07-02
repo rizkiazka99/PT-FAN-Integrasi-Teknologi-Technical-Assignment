@@ -14,13 +14,13 @@ class SplashScreenController extends GetxController {
   }
 
   @override
-  void dispose() {
+  void onClose() {
     super.dispose();
   }
 
   firstPage() {
     if (firebaseAuth.currentUser != null) {
-      Get.offAllNamed(mainScreenRoute);
+      Get.offAllNamed(emailVerificationScreenRoute);
     } else {
       Get.offAllNamed(loginScreenRoute);
     }

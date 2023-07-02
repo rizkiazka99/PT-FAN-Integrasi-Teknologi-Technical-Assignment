@@ -13,10 +13,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeScreenController controller = Get.find<HomeScreenController>();
-
   @override
   Widget build(BuildContext context) {
+    HomeScreenController controller = Get.find<HomeScreenController>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

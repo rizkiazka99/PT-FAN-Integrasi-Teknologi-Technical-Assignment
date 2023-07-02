@@ -14,8 +14,8 @@ class LoginScreenController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController forgetPasswordEmailController = TextEditingController();
 
-  final emailFormKey = GlobalKey<FormState>();
-  final passwordFormKey = GlobalKey<FormState>();
+  final loginEmailFormKey = GlobalKey<FormState>();
+  final loginPasswordFormKey = GlobalKey<FormState>();
   final forgetPasswordEmailFormKey = GlobalKey<FormState>();
 
   var autoValidateEmail = AutovalidateMode.disabled;
@@ -36,21 +36,12 @@ class LoginScreenController extends GetxController {
   }
 
   @override
-  void dispose() {
+  void onClose() {
+    super.onClose();
     emailController.dispose();
     passwordController.dispose();
     forgetPasswordEmailController.dispose();
-    super.dispose();
-  }
-
-  double formLayoutHeight(BuildContext context) {
-    if (autoValidateEmail == AutovalidateMode.disabled && autoValidatePassword == AutovalidateMode.disabled) {
-      return MediaQuery.of(context).size.height / 1.9;
-    } else if (autoValidateEmail == AutovalidateMode.always || autoValidatePassword == AutovalidateMode.always) {
-      return MediaQuery.of(context).size.height / 1.7;
-    } else {
-      return MediaQuery.of(context).size.height / 1.5;
-    }
+    print('loginScreenController disposed');
   }
 
   void showAndHidePassword() {
@@ -58,8 +49,8 @@ class LoginScreenController extends GetxController {
   }
 
   login() async {
-    final isEmailValid = emailFormKey.currentState!.validate();
-    final isPasswordValid = passwordFormKey.currentState!.validate();
+    final isEmailValid = loginEmailFormKey.currentState!.validate();
+    final isPasswordValid = loginPasswordFormKey.currentState!.validate();
 
     try {
       if (isEmailValid && isPasswordValid) {
@@ -71,7 +62,7 @@ class LoginScreenController extends GetxController {
         await firebaseAuth.signInWithEmailAndPassword(
           email: emailController.text, 
           password: passwordController.text
-        ).then((value) => Get.offAllNamed(mainScreenRoute));
+        ).then((value) => Get.offAllNamed(emailVerificationScreenRoute));
       } else if (!isEmailValid) {
         autoValidateEmail = AutovalidateMode.always;
       } else if (!isPasswordValid) {

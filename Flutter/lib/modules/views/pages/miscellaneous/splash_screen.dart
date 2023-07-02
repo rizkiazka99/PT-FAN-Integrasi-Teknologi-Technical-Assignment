@@ -13,10 +13,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  SplashScreenController controller = Get.find<SplashScreenController>();
-
   @override
   Widget build(BuildContext context) {
+    SplashScreenController controller = Get.find<SplashScreenController>();
+    
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(

@@ -8,7 +8,6 @@ import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/widgets/auth
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/widgets/confirmation_dialog.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/modules/views/widgets/default_button.dart';
 import 'package:pt_fan_integrasi_teknologi_assignment/router/route_names.dart';
-
 import '../../../../core/values/font_sizes.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -19,10 +18,10 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  RegisterScreenController controller = Get.find<RegisterScreenController>();
-
   @override
   Widget build(BuildContext context) {
+    RegisterScreenController controller = Get.put(RegisterScreenController());
+
     return WillPopScope(
       onWillPop: () {  
         if (controller.emailController.text.isNotEmpty || controller.nameController.text.isNotEmpty 
@@ -32,7 +31,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               title: 'Hold up!', 
               content: 'Are you sure you want to cancel your account creation?', 
               onConfirmation: () {
-                Get.offAllNamed(loginScreenRoute);
+                //Get.offNamed(loginScreenRoute);
+                Get.back();
+                Get.back();
               }
             ));
             return Future.value(false);
@@ -47,36 +48,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            child: Stack(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      color: Colors.white,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 2,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: const BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)
-                        )
+            child: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.white,
                       ),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Image.asset(
-                          'assets/img/logo.jpg'
+                      Container(
+                        height: MediaQuery.of(context).size.height / 2,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: const BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)
+                          )
                         ),
-                      ),
-                    )
-                  ],
-                ),
-                SingleChildScrollView(
-                  child: SizedBox(
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: Image.asset(
+                            'assets/img/logo.jpg'
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
                     height: MediaQuery.of(context).size.height,
                     child: Center(
                       child: Container(
@@ -144,7 +145,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               const SizedBox(height: 15),
                               AuthenticationForm(
-                                formKey: controller.emailFormKey, 
+                                formKey: controller.registerEmailFormKey, 
                                 autovalidateMode: controller.autoValidateEmail, 
                                 controller: controller.emailController, 
                                 label: 'Email',
@@ -165,7 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               const SizedBox(height: 15),
                               Obx(() => AuthenticationForm(
-                                formKey: controller.passwordFormKey, 
+                                formKey: controller.registerPasswordFormKey, 
                                 autovalidateMode: controller.autoValidatePassword, 
                                 controller: controller.passwordController, 
                                 label: 'Password',
@@ -183,7 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 validator: (value) {
                                   bool validate = CustomRegEx.validatePassword(value!);
-
+            
                                   if (value.isEmpty) {
                                     return 'Password field cannot be left empty';
                                   } else {
@@ -238,7 +239,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         title: 'Hold up!', 
                                         content: 'Are you sure you want to cancel your account creation?', 
                                         onConfirmation: () {
-                                          Get.offAllNamed(loginScreenRoute);
+                                          //Get.offNamed(loginScreenRoute);
+                                          Get.back();
+                                          Get.back();
                                         }
                                       ));
                                   } else {
@@ -253,9 +256,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
