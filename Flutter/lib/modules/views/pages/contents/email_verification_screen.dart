@@ -80,7 +80,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       const SizedBox(height: 20),
                       DefaultButton(
                         onTap: () {
-                           if (controller.canResendEmail == true) {
+                          if (controller.canResendEmail) {
                             controller.sendVerificationEmail();
                             print('canResendEmail: ${controller.canResendEmail}');
                             customSnackbar('Yay!', 'E-mail has been resent');

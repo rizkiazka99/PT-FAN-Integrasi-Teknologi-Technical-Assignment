@@ -20,6 +20,8 @@ class EmailVerificationController extends GetxController {
   set canResendEmail(bool canResendEmail) =>
       this._canResendEmail.value = canResendEmail;
 
+  String errorMessage = '';
+
   @override
   void onInit() {
     super.onInit();
@@ -54,8 +56,17 @@ class EmailVerificationController extends GetxController {
       canResendEmail = false;
       await Future.delayed(const Duration(seconds: 30));
       canResendEmail = true;
-    } catch(err) {
-      customSnackbar('Oops', err.toString());
+    } on FirebaseAuthException catch(err) {
+      switch(err.code) {
+        case "too-many-requests":
+          errorMessage = 'Too many requests, we\'re putting you on a halt for a moment';
+          break;
+        default:
+          errorMessage = 'Something went wrong';
+          break;
+      }
+
+      customSnackbar('Oops!', errorMessage);
     }
   }
 

@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.height,
-                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 3.8),
                   color: primaryColor,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,9 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height / 4.5,
+                  //height: MediaQuery.of(context).size.height / 4.5,
                   width: MediaQuery.of(context).size.height,
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 25),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(35),
